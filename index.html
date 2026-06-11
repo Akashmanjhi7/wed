@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WedoEditz - Agency Profile</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        syne: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: '#ff3333',
+                        dark: '#050505',
+                        darker: '#0a0a0a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Screen styling (Dark Theme for Preview) */
+        body {
+            background-color: #050505;
+            color: #e0e0e0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            /* Force exact colors even before print media query to be safe */
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff3333; }
+
+        /* MAGIC PRINT CSS: Keep it strictly exactly as the screen for PDF */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            body {
+                background-color: #050505 !important;
+                background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px) !important;
+                color: #e0e0e0 !important;
+            }
+            /* Just hiding the button during print, keeping all other colors untouched */
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen py-10 px-4 flex justify-center selection:bg-brand selection:text-white">
+
+    <!-- Print Button (Hidden on PDF export) -->
+    <div class="fixed top-6 right-6 flex gap-4 no-print z-50">
+        <button onclick="window.print()" class="bg-brand text-white px-6 py-2 rounded-full font-bold uppercase tracking-wider text-xs shadow-[0_0_15px_rgba(255,51,51,0.5)] hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Save as PDF
+        </button>
+    </div>
+
+    <!-- Resume Container (A4 Proportions) -->
+    <div class="bg-darker/90 backdrop-blur-md border border-white/10 shadow-2xl rounded-sm w-full max-w-[850px] min-h-[1100px] flex flex-col md:flex-row overflow-hidden relative">
+        
+        <!-- LEFT COLUMN (Sidebar) -->
+        <div class="w-full md:w-[35%] bg-[#0a0a0a] border-r border-white/10 p-8 flex flex-col gap-8">
+            
+            <!-- Branding / Name (Fixed Name overflowing issue) -->
+            <div>
+                <h1 class="text-2xl md:text-3xl lg:text-[1.7rem] font-bold font-syne uppercase text-white tracking-tighter leading-none whitespace-nowrap" contenteditable="true">WEDO<span class="text-brand">EDITZ</span></h1>
+                <p class="text-gray-400 font-bold text-sm tracking-widest uppercase mt-2" contenteditable="true">Post-Production Agency</p>
+                <div class="mt-4 inline-block bg-brand/10 border border-brand/20 px-3 py-1 rounded-sm">
+                    <p class="text-brand text-xs font-bold uppercase tracking-widest" contenteditable="true">Est. 2024</p>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="space-y-3 text-sm text-gray-300">
+                <div class="flex items-center gap-3">
+                    <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <span contenteditable="true">info@wedoeditz.in</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    <span contenteditable="true">+91 9625435172</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    <a href="https://www.wedoeditz.in/work" class="hover:text-brand transition-colors">www.wedoeditz.in/work</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span contenteditable="true">Faridabad, India</span>
+                </div>
+            </div>
+
+            <!-- Agency Capabilities (Updated with precise Industry terms) -->
+            <div>
+                <h3 class="font-syne font-bold text-white uppercase tracking-wider mb-4 border-b border-white/20 pb-2">Our Capabilities</h3>
+                <div class="flex flex-col gap-2 text-sm text-gray-300" contenteditable="true">
+                    <p>• Episodic / EP Cuts</p>
+                    <p>• Narration & Storytelling</p>
+                    <p>• Cinematic Trailers</p>
+                    <p>• IOC </p>
+                    <p>• Static Ads & UGC Creatives</p>
+                    <p>• AI-Driven Content Generation</p>
+                </div>
+            </div>
+
+            <!-- Agency Infrastructure -->
+            <div>
+                <h3 class="font-syne font-bold text-white uppercase tracking-wider mb-4 border-b border-white/20 pb-2">Infrastructure & Stack</h3>
+                <div class="flex flex-wrap gap-2 text-xs font-bold tracking-wider" contenteditable="true">
+                    <span class="bg-white/10 border border-white/5 px-3 py-1 rounded-sm text-white">Premiere Pro</span>
+                    <span class="bg-white/10 border border-white/5 px-3 py-1 rounded-sm text-white">After Effects</span>
+                    <span class="bg-white/10 border border-white/5 px-3 py-1 rounded-sm text-white">FinalCut PRO</span>
+                    <span class="bg-white/10 border border-white/5 px-3 py-1 rounded-sm text-white">Higgsfield / AI Tools</span>
+                </div>
+            </div>
+
+            <!-- Point of Contact -->
+            <div class="mt-auto pt-8 border-t border-white/10">
+                <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Point of Contact</p>
+                <p class="font-bold text-white text-sm" contenteditable="true">Burger</p>
+                <p class="text-xs text-gray-400" contenteditable="true">Founder & Creative Lead</p>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN (Main Content) -->
+        <div class="w-full md:w-[65%] p-8 bg-[#050505]">
+            
+            <!-- Agency Overview -->
+            <div class="mb-8">
+                <h3 class="font-syne font-bold text-brand uppercase tracking-wider mb-3 text-sm">Agency Overview</h3>
+                <p class="text-gray-300 text-sm leading-relaxed" contenteditable="true">
+                    Established in 2024, WedoEditz is a specialized post-production agency partnering with top OTT, audio-series, and storytelling platforms in India. We engineer high-retention content at scale. From binge-worthy Episodic Cuts to high-converting IOC and Trailers, we merge data-driven pacing with advanced AI and sound design to keep audiences hooked.
+                </p>
+            </div>
+
+            <!-- Key Clients & Projects (Updated with exact companies and formats) -->
+            <div class="mb-8">
+                <h3 class="font-syne font-bold text-brand uppercase tracking-wider mb-5 text-sm border-b border-white/10 pb-2">Key Clients & Formats Delivered</h3>
+                
+                <!-- Client 1 -->
+                <div class="mb-6">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-bold text-white text-md uppercase" contenteditable="true">Pocket FM (Microdrama)</h4>
+                    </div>
+                    <p class="text-xs text-gray-500 font-bold tracking-widest uppercase mb-2" contenteditable="true">Narration, Episodic Cuts & AI Formats</p>
+                    <ul class="text-sm text-gray-300 space-y-2 list-disc list-outside ml-4" contenteditable="true">
+                        <li>Mastered high-retention <strong>Narration edits</strong> and <strong>Episodic Cuts</strong> structured specifically to maximize watch time and binge-watching behavior.</li>
+                        <li>Leveraged <strong>AI-generated visuals</strong> and advanced sound design (Foley/SFX) to convert audio scripts into highly immersive visual stories at scale.</li>
+                    </ul>
+                </div>
+
+                <!-- Client 2 -->
+                <div class="mb-6">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-bold text-white text-md uppercase" contenteditable="true">Stage App & Alright TV</h4>
+                    </div>
+                    <p class="text-xs text-gray-500 font-bold tracking-widest uppercase mb-2" contenteditable="true">Trailers, IOC & Performance Ads</p>
+                    <ul class="text-sm text-gray-300 space-y-2 list-disc list-outside ml-4" contenteditable="true">
+                        <li>Crafted high-energy <strong>Trailers</strong> that hook the audience within the critical first 3 seconds, driving high click-through rates for shows.</li>
+                        <li>Produced data-driven <strong>IOC (Insertion Content)</strong> and <strong>Static Ads</strong> specifically designed for performance marketing and app user acquisition (UAC).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- What We Do For Brands (The Pitch) -->
+            <div class="mb-8 bg-white/5 p-5 border border-white/10 rounded-sm">
+                <h3 class="font-syne font-bold text-white uppercase tracking-wider mb-3 text-sm">Why Partner With Us?</h3>
+                <div class="grid grid-cols-2 gap-4 text-sm text-gray-300" contenteditable="true">
+                    <div>
+                        <strong class="text-white block mb-1">Scale Without Overhead</strong>
+                        Send us the Show ; we handle the complete EP Cut, Narration, and IOC .
+                    </div>
+                    <div>
+                        <strong class="text-white block mb-1">Lightning Fast TAT</strong>
+                        Our internal review systems and dedicated team ensure bulk delivery without missing your content calendar.
+                    </div>
+                    <div>
+                        <strong class="text-white block mb-1">Data-Backed Editing</strong>
+                        We use analytics to understand drop-off points and implement pattern interrupts exactly where needed.
+                    </div>
+                    <div>
+                        <strong class="text-white block mb-1">Agency-Level Security</strong>
+                        Strict NDAs and secure data servers ensure your unreleased scripts and Shows remain completely confidential.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
